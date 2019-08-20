@@ -4,3 +4,34 @@ Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 */
+
+/* Best way to perform a basic reset using the universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Setting project-wide font definitions */
+body {
+  font-family: "Lato", san-serif;
+  font-weight: 400;;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  height: 95vh;
+  /* ^ i.e., 95% of the viewport height */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url(../img/hero.jpg);
+  /* rgba - red, green, blue, a (opacity) */
+  background-size: cover;
+  /* ^ 'cover' will always try to fit the element within the viewport */
+  background-position: top;
+  /* 'top' will ensure that the top does not get cropped as you change the viewport   */
+  /* similarly, 'center' will crop the top, bottom, and sides to keep the element centered as you change the viewport */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* polygon(x axis y axis, x y, x y, x y), you are controlling the position of the corners... */
+}
