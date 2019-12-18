@@ -94,6 +94,7 @@ body {
   font-weight: 700;
   letter-spacing: 17.4px;
   animation: moveInRight 1s ease-out;
+  /* ^ Same as separately listing out 'animation-name: moveInLeft;' 'animation-duration: 1s;' 'animation-timing-function: ease-out;' */
 }
 
 @keyframes moveInLeft {
@@ -101,10 +102,10 @@ body {
     opacity: 0;
     transform: translateX(-100px);
   }
+  /* ^ Start of animation */
   80% {
     transform: translateX(10px);
   }
-  /* ^ Start of animation */
   100% {
     opacity: 1;
     transform: translate(0);
@@ -117,10 +118,10 @@ body {
     opacity: 0;
     transform: translateX(100px);
   }
+  /* ^ Start of animation */
   80% {
     transform: translateX(-10px);
   }
-  /* ^ Start of animation */
   100% {
     opacity: 1;
     transform: translate(0);
@@ -138,8 +139,9 @@ body {
   /* border-radius: 100px; */
   transition: all .2s;
   /* ^ Adds light animation (fluidity) to the 'hover' and 'active' pseudo class special states, otherwise the transformations from hovering over, and clicking on, the button will appear jerky and not smooth */
+  position: relative;
 }
-/* ^ 'link' and 'visited' are pseudo classes, pseudo classes are special states of a selector, 'link' and 'visited' are special states of the 'btn' selector */
+/* ^ 'link' and 'visited' are examples of pseudo classes, pseudo classes are special states of a selector, 'link' and 'visited' are special states of the 'btn' selector */
 
 .btn:hover {
   transform: translateY(-3px);
@@ -155,4 +157,47 @@ body {
 .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+/* The ::after selector inserts something after the content of each selected element(s). */
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  /* ^ animation-delay: .75s */
+  animation-fill-mode: backwards;
+  /* ^ Automatically applies the styles of the 0% in 'moveInBottom' BEFORE the animation starts */
+  /* ^ This, in conjunction with the animation delay above, allows the button animation to occur AFTER the 'heading-primary' animations */
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  /* ^ Start of animation */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  /* ^ End of animation */
 }
