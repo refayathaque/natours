@@ -63,6 +63,8 @@ body {
   transform: translate(-50%, -50%);
   /* ^ In a way, alters the start position (when position is in relation to another element (in this case the 'header')) of an element from the top left corner to anywhere else within the element (in this application, the element's absolute center) */
   /* ^ I.e., movement in relation to the element itself */
+  text-align: center;
+  /* button is treated like text since it is 'inline-block', therefore we can center it by setting 'text-align' in its parent element 'text-box' to 'center' */
 }
 
 .heading-primary {
@@ -70,6 +72,7 @@ body {
   text-transform: uppercase;
   /* backface-visibility: hidden; */
   /* ^ Use in case animation jerks up and down as it completes */
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -123,4 +126,33 @@ body {
     transform: translate(0);
   }
   /* ^ End of animation */
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  /* Whenever we are trying to add padding/height/width to elements that are already 'inline' we should set the 'display' to 'inline-block' */
+  /* border-radius: 100px; */
+  transition: all .2s;
+  /* ^ Adds light animation (fluidity) to the 'hover' and 'active' pseudo class special states, otherwise the transformations from hovering over, and clicking on, the button will appear jerky and not smooth */
+}
+/* ^ 'link' and 'visited' are pseudo classes, pseudo classes are special states of a selector, 'link' and 'visited' are special states of the 'btn' selector */
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  /* ^ (x, y, blur, color) */
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+/* ^ 'active' pseudo class is for when we click on the button */
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
