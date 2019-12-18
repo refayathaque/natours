@@ -41,4 +41,86 @@ body {
   /* polygon(x axis y axis, x axis y axis, x axis y axis, x axis y axis), you are essentially controlling the position of the corners...the 'x y' pairs correspond to each corner in a clockwise fashion */
   /* clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%); - Triangle */
   /* https://bennettfeely.com/clippy/ */
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  /* ^ 'top' and 'left' are 'relative' to the parent element, in this case the parent element is the <header> element. So the class for the <header> element must have the property `position: relative` */
+}
+
+.logo {
+  height: 35px;
+  /* If you set the height, the browser will automatically figure out the width, and vice versa */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ^ In a way, alters the start position (when position is in relation to another element (in this case the 'header')) of an element from the top left corner to anywhere else within the element (in this application, the element's absolute center) */
+  /* ^ I.e., movement in relation to the element itself */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* backface-visibility: hidden; */
+  /* ^ Use in case animation jerks up and down as it completes */
+}
+
+.heading-primary-main {
+  display: block;
+  /* Block elements occupy the entire width that they have available and they create line breaks after and before themselves */
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  /* animation-delay: 3s; */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  /* ^ Start of animation */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  /* ^ End of animation */
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  /* ^ Start of animation */
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  /* ^ End of animation */
 }
